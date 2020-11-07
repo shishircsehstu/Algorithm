@@ -1,6 +1,6 @@
 /*
 Md. Saddam Hossain
-ios developer at Twinbit limit
+ios developer at Twinbit limited
 shishir.cse.hstu@gmail.com
 */
 #include<bits/stdc++.h>
