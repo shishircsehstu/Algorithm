@@ -1,17 +1,19 @@
+/*
+Md. Saddam Hossain
+ios developer at Twinbit limit
+shishir.cse.hstu@gmail.com
+*/
 #include<bits/stdc++.h>
 using namespace std;
 
 string main_str = "abcdefghijklmnopqrstuvwxyz";
-int main()
-{
-    int n,position,total_replace;
-    string input_str;
-    cin>>input_str>>n;
 
+void replace_char(string input_str, int n)
+{
     for(int i=0; i<input_str.size(); i++)
     {
-        position = int(input_str[i])-97; // finding ASCII value
-        total_replace = position+n;
+        int  position = int(input_str[i])-97; // finding ASCII value
+        int total_replace = position+n;
 
         if ((total_replace)<=25) // total character 26 and started from 0 index so 25.
         {
@@ -24,6 +26,14 @@ int main()
             cout<<main_str[new_position];
         }
     }
+}
+int main()
+{
+    int n;
+    string input_str;
+    cin>>input_str>>n;
+    replace_char(input_str,n);
+
     return 0;
 
 }
