@@ -1,0 +1,73 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define siz 5001
+vector<int>graph[siz];
+
+int visited[siz];
+int sumOfEnergy[siz];
+
+int arr[siz],n;
+int dfs(int src)
+{
+    if (visited[src] == 1) return 0;
+    visited[src]=1;
+
+    if (src!=1&&graph[src].size()==0)
+        return src;
+
+    for(int i=0; i<graph[src].size(); i++)
+    {
+        sumOfEnergy[src] += dfs(graph[src][i]);
+    }
+    sumOfEnergy[src]+=src;
+    //cout<<" "<<src<<" "<<  sumOfEnergy[src] <<endl;
+    return sumOfEnergy[src];
+
+}
+void make_tree()
+{
+    int lo = 1;
+    queue<int>Q1;
+    Q1.push(1);
+    while(!Q1.empty())
+    {
+        int parent = Q1.front();
+        Q1.pop();
+
+        int child = arr[lo++];  // pick left child
+        graph[parent].push_back(child);
+        Q1.push(child);
+        cout<<parent<<" -> "<<child<<endl;
+
+        if(lo>=n) return;
+
+        child = arr[lo++];  //pick right child
+        graph[parent].push_back(child);
+        Q1.push(child);
+        cout<<parent<<"->"<<child<<endl;
+
+        if(lo>=n) return;
+    }
+}
+int main()
+{
+    scanf("%d",&n);
+    for(int i=0; i<n; i++)
+        scanf("%d",&arr[i]);
+    make_tree();
+    cout<<"size "<<graph[4].size()<<endl;
+    cout<<graph[4][0]<<" -- "<<graph[4][1]<<endl;
+    dfs(1);
+    for(int i=1; i<=n; i++)
+    {
+        cout<<sumOfEnergy[i]<<endl;
+    }
+    return 0;
+
+}
+/*
+12
+1 2 4 10 11 5 7 3 6 9 8 12
+
+*/
+
