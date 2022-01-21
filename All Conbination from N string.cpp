@@ -24,3 +24,18 @@ public:
         }
     }
 };
+
+
+int main() {
+    
+    
+    vector<string>st;
+    st.push_back("abc");
+    st.push_back("def");
+    st.push_back("ghij");
+    
+    Solution ob;
+    ob.allCombination(st, 0);
+    
+    return 0;
+}
